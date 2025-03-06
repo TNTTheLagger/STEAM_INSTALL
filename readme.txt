@@ -1,70 +1,58 @@
-To install:
+# Steam Without Privilege Escalation
 
-0 - Install git
+This script automates the installation of Steam on Windows computers, specifically designed to run Steam without requiring administrative privileges. It is ideal for situations like using school or work computers where admin rights are restricted. The process allows you to install and run Steam without needing to escalate privileges, making it perfect for accessing Steam on computers that otherwise wouldn't allow it.
 
-1- Git clone https://github.com/ScoopInstaller/Scoop to downloads folder
+## How It Works
 
-4- Next, open "Powershell ISE (x86)" It must be this version or it will not work
+1. **Install Git (via Winget):**  
+   The script checks if Git is installed, and if not, it uses `winget` to install it in a separate PowerShell window.
 
-6- Type "cd " then the unzipped folder's name (usually scoop-master) example: "cd Scoop"
+2. **Clone Scoop Repository:**  
+   The script clones the Scoop repository to `C:\Scoop` to install Scoop, a command-line installer for Windows.
 
-7- Run these commands
+3. **Install Scoop:**  
+   If Scoop is already installed, the script will update it. Otherwise, it installs Scoop and sets the necessary execution policy for scripts.
 
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm get.scoop.sh | iex
+4. **Install Git via Scoop:**  
+   Git is installed via Scoop, which helps keep installations clean and easy to manage.
 
-8- When the above script finishes running run this one
+5. **Add Scoop Versions Bucket:**  
+   The script adds the `versions` bucket in Scoop to access different versions of software packages, including Steam.
 
-scoop install git # This is needed fordependencies
+6. **Copy Steam Files:**  
+   The script copies necessary Steam files (like `steam.json` and `steam.zip`) from a predefined source to the required XAMPP directory, making sure the installation is ready to run.
 
-9- Then this one
+7. **Start XAMPP:**  
+   The script starts the XAMPP control panel, which is used to manage local servers like Apache, which Steam can run on.
 
-scoop bucket add versions
+8. **Install Steam via Scoop:**  
+   Finally, the script installs Steam using Scoop, ensuring the process remains non-intrusive and avoids the need for elevated privileges.
 
-10 - Copy G:\STEAM_INSTALL\steam.json
+## Benefits
 
-10- Then this one
+- **No Administrative Privileges:**  
+  You don't need to be an administrator on the machine to install and run Steam.
+  
+- **Ideal for Restricted Environments:**  
+  Perfect for use on school or work computers where administrative rights are not available.
 
-scoop install steam
+- **Portable & Easy to Use:**  
+  The script is simple to run and doesn't require complex configuration, making it easy to use in any environment.
 
-Finally, it should be installed
+## Prerequisites
 
-Note: Ignore all install requests or repair requests from steam because those require an admin password. After opening and closing the app a few times it will connect properly and let you install games.
+- **PowerShell ISE (x86):**  
+  Make sure to run the script using PowerShell ISE (x86) for compatibility.
+  
+- **XAMPP:**  
+  You need to have XAMPP installed for managing the local server.
 
-Note 2: After the process is complete you can find Steam by hitting the windows key and typing Steam. If you did this correctly it will show up as an installed app.
+## Usage
 
-Link to the original comment explaining this Here
+1. Download the repository and open the PowerShell ISE (x86).
+2. Run the script. It will install all dependencies and start XAMPP.
+3. Once completed, you can open Steam and play your games!
 
-Thank you to the deleted user who brought us this sacred knowledge
+## License
 
-
-
-
-0 - Open "Powershell ISE (x86)" It must be this version or it will not work
-
-1 - Install git
-
-2- Git clone https://github.com/ScoopInstaller/Scoop to downloads folder
-
-3- Type "cd " then the unzipped folder's name (usually scoop-master) example: "cd Scoop"
-
-4- Run these commands
-
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm get.scoop.sh | iex
-
-5- When the above script finishes running run this one
-
-scoop install git # This is needed fordependencies
-
-6- Then this one
-
-scoop bucket add versions
-
-7 - Copy G:\STEAM_INSTALL\steam.json to C:\Users\kaba.kevin\scoop\buckets\versions\bucket and replace the exising steam.json
-
-8 - Copy G:\STEAM_INSTALL\steam\steam.zip to C:\xampp\htdocs\steam
-
-8- Then run this one
-
-scoop install steam
+This project is licensed under the MIT License.
