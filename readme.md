@@ -2,7 +2,7 @@
 
 This script automates the installation of Steam on Windows computers, specifically designed to run Steam without requiring administrative privileges. It is ideal for situations like using school or work computers where admin rights are restricted. The process allows you to install and run Steam without needing to escalate privileges, making it perfect for accessing Steam on computers that otherwise wouldn't allow it.
 
-##Before you rn the code if you get an error about certificates just run this 
+## Before you rn the code if you get an error about certificates just run this 
 '''Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force'''
 
 ## How It Works
